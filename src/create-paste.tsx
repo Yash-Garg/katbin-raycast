@@ -1,5 +1,5 @@
 import { Form, ActionPanel, Action, showToast, Clipboard } from "@raycast/api";
-import { useFetch } from "@raycast/utils";
+import { showFailureToast, useFetch } from "@raycast/utils";
 import { useEffect, useState } from "react";
 
 type PasteResponse = {
@@ -18,7 +18,7 @@ export default function Command() {
     execute: false,
   });
 
-  async function handleSubmit(values: { content: string }) {
+  function handleSubmit(values: { content: string }) {
     setContent(values.content);
   }
 
@@ -31,9 +31,17 @@ export default function Command() {
   useEffect(() => {
     if (data?.id) {
       const pasteUrl = `https://katb.in/${data.id}`;
-      Clipboard.copy(pasteUrl);
-      showToast({ title: "Paste created!", message: pasteUrl });
-      setContent("");
+      const copyToClipboard = async () => {
+        try {
+          await Clipboard.copy(pasteUrl);
+          showToast({ title: "Paste created!", message: pasteUrl });
+        } catch (error) {
+          showFailureToast({ title: "Failed to copy to clipboard" });
+        }
+        setContent("");
+      };
+
+      copyToClipboard();
     }
   }, [data]);
 
