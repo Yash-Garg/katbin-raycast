@@ -38,11 +38,14 @@ export default function Command() {
   }, [data]);
 
   return (
-    <Form isLoading={isLoading} actions={
-      <ActionPanel>
-        <Action.SubmitForm title="Submit" onSubmit={handleSubmit} />
-      </ActionPanel>
-    }>
+    <Form
+      isLoading={isLoading}
+      actions={
+        <ActionPanel>
+          <Action.SubmitForm title="Submit" onSubmit={handleSubmit} />
+        </ActionPanel>
+      }
+    >
       <Form.Description text="Paste the text you want to save in Katbin" />
       <Form.TextArea id="content" title="Content" placeholder="Enter your text here" />
     </Form>

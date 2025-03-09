@@ -1,7 +1,7 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "katbin",
-  "title": "katb.in",
+  "title": "Katbin",
   "description": "Create pastes on https://katb.in directly!",
   "icon": "icon.png",
   "author": "yashgarg",
@@ -12,7 +12,7 @@
   "commands": [
     {
       "name": "katbin",
-      "title": "Create paste",
+      "title": "Create Paste",
       "description": "Create pastes on https://katb.in directly!",
       "mode": "view"
     }
